@@ -11,7 +11,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('components.layout', ['name' => 'James']);
+        return view('daily', ['name' => 'James']);
     }
 
     /**
