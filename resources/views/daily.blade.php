@@ -20,7 +20,11 @@
       <div class="d-flex flex-wrap gap-2">
        
         {{-- todo accordion --}}
-        <x-todo></x-todo>
+        <x-todo>{!! $todos !!}</x-todo>
+
+        {{-- @foreach ( $data as $eek)
+          <p>1</p>
+        @endforeach --}}
 
       </div>
 

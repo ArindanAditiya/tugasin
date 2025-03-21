@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DailyTodo;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -11,7 +12,8 @@ class TodoController extends Controller
      */
     public function index()
     {
-        return view('daily', ['name' => 'James']);
+        $todos = DailyTodo::orderBy("task", "asc")->get();
+        return view('daily', compact("todos"));
     }
 
     /**

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DailyTodo extends Model
 {
     use HasFactory;
-    protected $table = "daily_todos";
+
+    protected $table = 'daily_todos';
+    protected $primaryKey = 'daily_todo_id';
+    protected $fillable = ['kerjaan', 'mulai', 'berakhir', 'status'];
 }
 
