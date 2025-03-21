@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tugasin</title>
 
+     {{-- colorpicker --}}
+     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+     <link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
+
     {{-- icon --}}    
     <link rel="icon" type="image/x-icon" href="{{ asset("img/logo.ico") }}">
 
@@ -48,7 +53,44 @@
     </div>
     <script src={{ asset("js/ui.js") }}></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
+      $("input[name=time]").clockpicker({       
+  placement: 'top',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+
+
       // Inisialisasi tooltip
       document.addEventListener("DOMContentLoaded", function () {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
