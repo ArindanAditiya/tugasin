@@ -6,9 +6,9 @@
     <title>tugasin</title>
 
      {{-- colorpicker --}}
-     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-     <script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
-     <link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
+     <script src="{{ asset("js/jquery-1.11.0.min.js") }}"></script>
+     <script src="{{ asset("js/jquery-clockpicker.min.js") }}"></script>
+     <link rel="stylesheet" href="{{ asset("css/jquery-clockpicker.min.css") }}"></link>
 
     {{-- icon --}}    
     <link rel="icon" type="image/x-icon" href="{{ asset("img/logo.ico") }}">
@@ -18,16 +18,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 
-    <!-- cdn bootsrtap5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- bootstrap5 local -->
     <link href="{{ asset("bootstrap5/css/bootstrap.min.css") }}" rel="stylesheet" />
     <script src="{{ asset("bootstrap5/js/bootstrap.bundle.min.js") }}"></script>
 
-    <!-- local css -->
+    <!-- style mandiri -->
     <link rel="stylesheet" href={{ asset("css/style.css") }} />
+    <link rel="stylesheet" href={{ asset("css/clockvalidate.css") }} />
 
     <!-- bootstrap5 icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -51,53 +48,49 @@
 
       </div>
     </div>
-    <script src={{ asset("js/ui.js") }}></script>
+
+    {{-- bootstrap5 --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    {{-- script mandiri --}}
+    <script src={{ asset("js/ui.js") }}></script>
+    <script src={{ asset("js/tooltip.js") }}></script>
+    <script src={{ asset("js/clockpicker.js") }}></script>
+    {{-- <script src={{ asset("js/clockvalidate.js") }}></script> --}}
     <script>
-      $("input[name=time]").clockpicker({       
-  placement: 'top',
-  align: 'left',
-  autoclose: true,
-  default: 'now',
-  donetext: "Select",
-  init: function() { 
-                            console.log("colorpicker initiated");
-                        },
-                        beforeShow: function() {
-                            console.log("before show");
-                        },
-                        afterShow: function() {
-                            console.log("after show");
-                        },
-                        beforeHide: function() {
-                            console.log("before hide");
-                        },
-                        afterHide: function() {
-                            console.log("after hide");
-                        },
-                        beforeHourSelect: function() {
-                            console.log("before hour selected");
-                        },
-                        afterHourSelect: function() {
-                            console.log("after hour selected");
-                        },
-                        beforeDone: function() {
-                            console.log("before done");
-                        },
-                        afterDone: function() {
-                            console.log("after done");
-                        }
-});
+      // ALGORITMA(target 3 hari) = 
+      // 3. buat logic perandingan waktu mulaidan selesai dengan membuang char titik dua ":"
+      // 4. mainkan dom 
+      // 5. poles dom dan lainlain 
+
+      // get Element__
+      const inputMulai = document.getElementById("inputMulai");
+      const inputSelesai = document.getElementById("inputSelesai");
+      const indicator = document.getElementById("indicator");
+      
+      setInterval(() => {
+       timeGap(inputMulai.value, inputSelesai.value) 
+      }, 1000);
+
+      function timeGap(start, end){
+        // replace : char
+        start = start.replace(/:/g, "");
+        end = end.replace(/:/g, "");
+
+        // convert to number
+        start = Number(start);
+        end = Number(end);
+
+        if( end < start ){
+          indicator.classList.remove("d-none");
+        } else {
+          indicator.classList.add("d-none");
+        }
+      }
 
 
-      // Inisialisasi tooltip
-      document.addEventListener("DOMContentLoaded", function () {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-      });
     </script>
   </body>
 </html>
+
+

@@ -25,22 +25,34 @@
       </div>
 
       <!-- add new -->
-      <div class="card-footer mt-3" style="background-color: #fdfcf3">
-        <div class="mt-3 mb-3 d-flex gap-2">
+      <div class="card-footer mt-3 row g-3" style="background-color: #fdfcf3">
+        <p>📝 Tambah Kerjaan baru :</p>
+        <p><span class="text-danger" id="startCheck">harus lebih besar</span></p>
+        <div class="col-md-3">
+          <label for="inputMulai" class="form-label">⏱️Mulai</label>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">⏱️</span>
-            <input type="text" name="time" class="form-control w-auto" />
-          </div>
-          <span><i class="bi bi-dash-lg"></i></span>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">⏱️</span>
-            <input type="text" name="time" class="form-control w-auto" />
+            <input id="inputMulai" name="time" type="button" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #ff8f70; border: none">
+            
           </div>
         </div>
-        <div class="input-group mb-3 mx-auto">
-          <span class="input-group-text">🎯</span>
-          <input id="task" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
-          <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">add</button>
+      
+        <div class="col-md-3">
+          <label for="inputSelesai" class="form-label">⏳Selesai</span></label>
+          <div class="input-group mb-3">
+            <input id="inputSelesai" name="time" type="button" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #e07a5f; border: none">
+          </div>
+        </div>
+      
+        <div class="col-md-6">
+          <label for="inputAmount" class="form-label">🎯Kerjaan</label>
+          <div class="input-group">
+            <input placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
+            <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>
+          </div>
+        </div>
+
+        <div id="indicator" style="margin-top: -10px; " class="col-md-6 text-center d-none">
+          <span class="text-warning" id="startCheck">waktu selesai harus lebih lambat dari waktu mulai</span>
         </div>
       </div>
       {{----}}
