@@ -1,20 +1,16 @@
 # To-Do List Laravel 12
 
-Project ini dibuat sebagai latihan Laravel selama 1 bulan.  
+project ini buat dokumentasi setelah belajar laravel selama 2 bulan
 Fungsinya untuk mencatat tugas dengan fitur tambah, edit, hapus, dan tandai selesai.
 
-## Teknologi
+## Fitur Utama
 
--   Laravel 12
--   MySQL
--   Bootstrap/Tailwind (jika ada)
+    Sebagai management tugas baik dalam tugas harian, bulanan, maupun goals. Lalu dapat lihat progress dan history dari yang sudah dikerjakan oleh user
 
-## Cara Install
+## tech Stack ⚙️
 
-1. Clone repo ini
-2. Jalankan `composer install`
-3. Copy `.env.example` ke `.env`, lalu sesuaikan database
-4. Jalankan `php artisan migrate --seed`
-5. Jalankan `php artisan serve`
-
-Selamat ngoding! 🚀
+-   Laravel 12 (back end)
+-   jQuery (front End)
+-   SQLite (database)
+-   Bootstrap 5 (ui)
+-   vanilla css
