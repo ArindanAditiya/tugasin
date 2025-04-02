@@ -5,7 +5,7 @@ Fungsinya untuk mencatat tugas dengan fitur tambah, edit, hapus, dan tandai sele
 
 ## Fitur Utama
 
-    Sebagai management tugas baik dalam tugas harian, bulanan, maupun goals. Lalu dapat lihat progress dan history dari yang sudah dikerjakan oleh user
+Sebagai management tugas baik dalam tugas harian, bulanan, maupun goals. Lalu dapat lihatprogress dan history dari yang sudah dikerjakan oleh user
 
 ## tech Stack ⚙️
 
