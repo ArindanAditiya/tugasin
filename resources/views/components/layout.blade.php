@@ -28,6 +28,9 @@
 
     <!-- bootstrap5 icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    {{-- sweetAlert 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <div class="griding">
@@ -56,40 +59,7 @@
     <script src={{ asset("js/ui.js") }}></script>
     <script src={{ asset("js/tooltip.js") }}></script>
     <script src={{ asset("js/clockpicker.js") }}></script>
-    {{-- <script src={{ asset("js/clockvalidate.js") }}></script> --}}
-    <script>
-      // ALGORITMA(target 3 hari) = 
-      // 3. buat logic perandingan waktu mulaidan selesai dengan membuang char titik dua ":"
-      // 4. mainkan dom 
-      // 5. poles dom dan lainlain 
-
-      // get Element__
-      const inputMulai = document.getElementById("inputMulai");
-      const inputSelesai = document.getElementById("inputSelesai");
-      const indicator = document.getElementById("indicator");
-      
-      setInterval(() => {
-       timeGap(inputMulai.value, inputSelesai.value) 
-      }, 1000);
-
-      function timeGap(start, end){
-        // replace : char
-        start = start.replace(/:/g, "");
-        end = end.replace(/:/g, "");
-
-        // convert to number
-        start = Number(start);
-        end = Number(end);
-
-        if( end < start ){
-          indicator.classList.remove("d-none");
-        } else {
-          indicator.classList.add("d-none");
-        }
-      }
-
-
-    </script>
+    <script src={{ asset("js/clockvalidate.js") }}></script>
   </body>
 </html>
 

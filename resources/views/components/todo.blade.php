@@ -3,29 +3,11 @@
 @endphp
 {{--UNTUK YANG GAGAL SAMA BERHASILNYA NANTI AJA DULU DIKERJAKANNYA  --}}
  
-{{-- berhasil dikerjakan --}}
- <span class="badge d-flex align-items-center border p-2 gap-2 position-relative" style="color: rgb(2, 97, 2); background-color: rgb(233, 247, 233)">
-    <span class="position-absolute top-0 translate-middle" style="font-size: large">
-     ✔️
-    <span class="visually-hidden">unread messages</span>
-    </span>
-    <mark>10:10 - 11:10</mark> Bangun pagi
-</span>
-    
-    {{-- gagal dikerjakan --}}
-<span class="badge d-flex align-items-center border p-2 gap-2 position-relative" style="color: rgb(158, 2, 2); background-color: rgb(246, 213, 213)">
-    <span class="position-absolute top-0 translate-middle" style="font-size: large">
-        ❌
-        <span class="visually-hidden">unread messages</span>
-    </span>
-    <mark><del>10:10 - 11:10</del></mark><del>Bangun pagi</del>
-</span>
-
 {{-- lagi dikerjakan --}}
 
 @foreach ( $todos as $todo )
 <span class="badge bg-light text-dark d-flex align-items-center border p-2 gap-2">
-    <mark>{{ $todo["mulai"] }} - {{ $todo["berakhir"] }}</mark>{{ $todo["kerjaan"] }}
+    <mark>{{ $todo["start"] }} - {{ $todo["end"] }}</mark>{{ $todo["task"] }}
   
     <!-- 1 EDIT -->
     <button type="button" class="btn-ghoib" data-bs-toggle="modal" data-bs-target="#edit" data-bs-placement="top" title="Edit">
@@ -69,3 +51,21 @@
     </form>
   </span> 
 @endforeach
+
+{{-- berhasil dikerjakan --}}
+<span class="badge d-flex align-items-center border p-2 gap-2 position-relative" style="color: rgb(2, 97, 2); background-color: rgb(233, 247, 233)">
+  <span class="position-absolute top-0 translate-middle" style="font-size: large">
+   ✔️
+  <span class="visually-hidden">unread messages</span>
+  </span>
+  <mark>10:10 - 11:10</mark> Bangun pagi
+</span>
+  
+  {{-- gagal dikerjakan --}}
+<span class="badge d-flex align-items-center border p-2 gap-2 position-relative" style="color: rgb(158, 2, 2); background-color: rgb(246, 213, 213)">
+  <span class="position-absolute top-0 translate-middle" style="font-size: large">
+      ❌
+      <span class="visually-hidden">unread messages</span>
+  </span>
+  <mark><del>10:10 - 11:10</del></mark><del>Bangun pagi</del>
+</span>

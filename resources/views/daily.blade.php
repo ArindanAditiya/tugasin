@@ -25,36 +25,72 @@
       </div>
 
       <!-- add new -->
-      <div class="card-footer mt-3 row g-3" style="background-color: #fdfcf3">
-        <p>📝 Tambah Kerjaan baru :</p>
-        <p><span class="text-danger" id="startCheck">harus lebih besar</span></p>
-        <div class="col-md-3">
-          <label for="inputMulai" class="form-label">⏱️Mulai</label>
-          <div class="input-group mb-3">
-            <input id="inputMulai" name="time" type="button" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #ff8f70; border: none">
-            
-          </div>
-        </div>
-      
-        <div class="col-md-3">
-          <label for="inputSelesai" class="form-label">⏳Selesai</span></label>
-          <div class="input-group mb-3">
-            <input id="inputSelesai" name="time" type="button" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #e07a5f; border: none">
-          </div>
-        </div>
-      
-        <div class="col-md-6">
-          <label for="inputAmount" class="form-label">🎯Kerjaan</label>
-          <div class="input-group">
-            <input placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
-            <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>
-          </div>
-        </div>
+      <form action="{{ route("daily.task") }}" method="POST">
+        @csrf
+        <div class="card-footer mt-3 row g-3" style="background-color: #fdfcf3">
+          <p>📝 Tambah Kerjaan baru :</p>
+          {{-- kalau berhasil --}}
+          @if (session()->has('success'))
+              <script>
+                const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+              icon: "success",
+              title: "{{ session('success') }}"
+            });
+              </script>
+          @endif
 
-        <div id="indicator" style="margin-top: -10px; " class="col-md-6 text-center d-none">
-          <span class="text-warning" id="startCheck">waktu selesai harus lebih lambat dari waktu mulai</span>
+          {{-- kalau error --}}
+          @if ($errors->any())
+              <div class="alert alert-danger border-0 rounded-3 shadow-sm p-3 mb-4">
+                  <h5 class="mb-2 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i>Ups! Ada yang salah:</h5>
+                  <ul class="mb-0 ps-3">
+                      @foreach ($errors->all() as $error)
+                          <li class="small">{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+
+
+<!-- Create Post Form -->
+          <div class="col-md-3">
+            <label for="inputMulai" class="form-label">⏱️Mulai</label>
+            <div class="input-group mb-3">
+              <input id="inputMulai" name="start" type="text" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #ff8f70; border: none">
+            </div>
+          </div>
+        
+          <div class="col-md-3">
+            <label for="inputSelesai" class="form-label">⏳Selesai</span></label>
+            <div class="input-group mb-3">
+              <input id="inputSelesai" name="end" type="text" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #e07a5f; border: none">
+            </div>
+          </div>
+        
+          <div class="col-md-6">
+            <label for="inputAmount" class="form-label">🎯tugas</label>
+            <div class="input-group">
+              <input value="{{ old('task') }}" name="task" placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
+              <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>
+            </div>
+          </div>
+  
+          <div id="indicator" style="margin-top: -10px; " class="col-md-6 text-center d-none">
+            <span class="text-warning" id="startCheck">waktu selesai harus lebih lambat dari waktu mulai</span>
+          </div>
         </div>
-      </div>
+      </form>
       {{----}}
 
     </div>

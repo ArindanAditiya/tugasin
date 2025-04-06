@@ -11,6 +11,6 @@ class DailyTodo extends Model
 
     protected $table = 'daily_todos';
     protected $primaryKey = 'daily_todo_id';
-    protected $fillable = ['kerjaan', 'mulai', 'berakhir', 'status'];
+    protected $fillable = ['task', 'start', 'end', 'status'];
 }
 
