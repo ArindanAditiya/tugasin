@@ -32,12 +32,12 @@ class TodoController extends Controller
         $request->validate([
             "start" => "required|date_format:H:i",
             "end" => "required|date_format:H:i|after:start",
-            "task" => "required|max:100"
+            "task" => "required|max:20"
         ],[
             "start.date_format" => "Format waktu harus HH:MM (contoh 12:00)",
             "end.date_format" => "Format waktu harus HH:MM (contoh 12:00)",
             "end.after" => "waktu selesai harus lebih lambat daripada waktu mulai",
-            "task.max" => "hanya bisa memasukkan maksimal 100 karakter pada field tugas"
+            "task.max" => "hanya bisa memasukkan maksimal 20 karakter pada field tugas"
         ]);
 
         $data = [
@@ -51,7 +51,7 @@ class TodoController extends Controller
         $task = $request->old('task');
 
         DailyTodo::create($data);
-        return redirect()->route("daily")->with("success","berhasil menambahkan tugas baru");
+        return redirect()->route("daily")->with("success","berhasil menambahkan tugas");
     }
 
     /**
@@ -83,6 +83,24 @@ class TodoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DailyTodo::find($id)->delete();
+        return redirect()->route("daily")->with("deleted", "berhasil menghapus tugas");
     }
+
 }
+
+
+
+
+
+
+
+
+
+// 🔍 Mencari satu baris data berdasarkan primary key (daily_todo_id) dan langsung menghapusnya
+        // Ini akan berhasil kalau model DailyTodo udah diset $primaryKey = 'daily_todo_id'
+        // DailyTodo::find($id)->delete();
+    
+        // 🧨 Ini cara alternatif kalau belum set primary key di model (langsung spesifikin kolomnya)
+        // Tapi hati-hati ya, ini akan tetap jalan walau data udah kehapus di baris atas
+        // DailyTodo::where("daily_todo_id", $id)->delete();

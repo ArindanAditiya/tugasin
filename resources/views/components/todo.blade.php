@@ -37,9 +37,30 @@
     </div>
   
     <!-- 2. HAPUS -->
-    <form action="" method="post" class="d-inline">
-      <button class="btn-ghoib" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-        <i class="bi bi-x-lg"></i>
+    @if (session()->has('deleted'))
+        <script>
+          const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+      });
+      Toast.fire({
+        icon: "info",
+        title: "{{ session('deleted') }}"
+      });
+        </script>
+    @endif
+    <form action="{{ route("daily.task.delete", ["id"=>$todo["daily_todo_id"]]) }}" onsubmit="return confirmSweetAlert(event)" method="post" class="d-inline">
+      @csrf
+      @method("delete")
+      <button  class="btn-ghoib" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">        
+        <i class="bi bi-trash"></i>
       </button>
     </form>
   

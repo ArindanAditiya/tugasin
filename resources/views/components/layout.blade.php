@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tugasin</title>
 
-     {{-- colorpicker --}}
-     <script src="{{ asset("js/jquery-1.11.0.min.js") }}"></script>
-     <script src="{{ asset("js/jquery-clockpicker.min.js") }}"></script>
-     <link rel="stylesheet" href="{{ asset("css/jquery-clockpicker.min.css") }}"></link>
+    {{-- colorpicker --}}
+    <script src="{{ asset("js/jquery-1.11.0.min.js") }}"></script>
+    <script src="{{ asset("js/jquery-clockpicker.min.js") }}"></script>
+    <link rel="stylesheet" href="{{ asset("css/jquery-clockpicker.min.css") }}"></link>
 
     {{-- icon --}}    
     <link rel="icon" type="image/x-icon" href="{{ asset("img/logo.ico") }}">
@@ -60,6 +60,8 @@
     <script src={{ asset("js/tooltip.js") }}></script>
     <script src={{ asset("js/clockpicker.js") }}></script>
     <script src={{ asset("js/clockvalidate.js") }}></script>
+    <script src={{ asset("js/taskvalidate.js") }}></script>
+    <script src={{ asset("js/deleteconfirm.js") }}></script>
   </body>
 </html>
 

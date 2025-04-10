@@ -25,10 +25,10 @@
       </div>
 
       <!-- add new -->
-      <form action="{{ route("daily.task") }}" method="POST">
+      <form action="{{ route("daily.task.insert") }}" method="POST">
         @csrf
         <div class="card-footer mt-3 row g-3" style="background-color: #fdfcf3">
-          <p>📝 Tambah Kerjaan baru :</p>
+          <h4>📝 Tambah Kerjaan baru</h4>
           {{-- kalau berhasil --}}
           @if (session()->has('success'))
               <script>
@@ -79,7 +79,7 @@
           </div>
         
           <div class="col-md-6">
-            <label for="inputAmount" class="form-label">🎯tugas</label>
+            <label for="inputAmount" class="form-label">🎯tugas <b><span id="countAndEnd" class=""><span id="count">0</span>/20</span></b></label>
             <div class="input-group">
               <input value="{{ old('task') }}" name="task" placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
               <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>
