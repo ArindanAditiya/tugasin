@@ -1,5 +1,3 @@
-console.log("clock validate");
-
 // get Element__
 const inputMulai = document.getElementById("inputMulai");
 const inputSelesai = document.getElementById("inputSelesai");

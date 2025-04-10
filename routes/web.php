@@ -7,4 +7,5 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/daily');
 
 Route::get('/daily', [TodoController::class, 'index'])->name("daily");
-Route::post('/daily', [TodoController::class, 'store'])->name('daily.task');
+Route::post('/daily', [TodoController::class, 'store'])->name('daily.task.insert');
+Route::delete("/daily/{id}", [TodoController::class, "destroy"])->name("daily.task.delete");
