@@ -79,7 +79,7 @@
           </div>
         
           <div class="col-md-6">
-            <label for="inputAmount" class="form-label">🎯tugas <b><span id="countAndEnd" class=""><span id="count">0</span>/20</span></b></label>
+            <label for="inputAmount" class="form-label d-flex">🎯tugas&nbsp;<b><span id="countAndEnd" class="d-block"><span id="count">0</span>/20</span></b></label>
             <div class="input-group">
               <input value="{{ old('task') }}" name="task" placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
               <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>

@@ -25,6 +25,8 @@
     <!-- style mandiri -->
     <link rel="stylesheet" href={{ asset("css/style.css") }} />
     <link rel="stylesheet" href={{ asset("css/clockvalidate.css") }} />
+    <link rel="stylesheet" href={{ asset("css/taskvalidate.css") }} />
+
 
     <!-- bootstrap5 icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -60,7 +62,7 @@
     <script src={{ asset("js/tooltip.js") }}></script>
     <script src={{ asset("js/clockpicker.js") }}></script>
     <script src={{ asset("js/clockvalidate.js") }}></script>
-    <script src={{ asset("js/taskvalidate.js") }}></script>
+    <script src={{ asset("js/taskvalidate.js") }}?v={{ time() }}></script>
     <script src={{ asset("js/deleteconfirm.js") }}></script>
   </body>
 </html>
