@@ -1,14 +1,25 @@
 // get Element__
 const inputMulai = document.getElementById("inputMulai");
 const inputSelesai = document.getElementById("inputSelesai");
+const inputMulaiEdit = document.getElementById("inputMulaiEdit");
+const inputSelesaiEdit = document.getElementById("inputSelesaiEdit");
 const indicator = document.getElementById("indicator");
 
+// eventlistener
 inputMulai.addEventListener("input", () => {
     inputMulai.value = validateTimeFormat(inputMulai.value);
 });
 inputSelesai.addEventListener("input", () => {
     inputSelesai.value = validateTimeFormat(inputSelesai.value);
 });
+inputMulaiEdit.addEventListener("input", () => {
+    inputMulaiEdit.value = validateTimeFormat(inputMulaiEdit.value);
+});
+inputSelesaiEdit.addEventListener("input", () => {
+    inputSelesaiEdit.value = validateTimeFormat(inputSelesaiEdit.value);
+});
+
+// gap
 setInterval(() => {
     timeGap(inputMulai.value, inputSelesai.value);
 }, 1000);

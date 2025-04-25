@@ -27,7 +27,7 @@
       <!-- add new -->
       <form action="{{ route("daily.task.insert") }}" method="POST">
         @csrf
-        <div class="card-footer mt-3 row g-3" style="background-color: #fdfcf3">
+        <div class="card-footer mt-3 row g-3 shadow-sm border bg-light">
           <h4>📝 Tambah Kerjaan baru</h4>
           {{-- kalau berhasil --}}
           @if (session()->has('success'))
@@ -51,7 +51,7 @@
           @endif
 
           {{-- kalau error --}}
-          @if ($errors->any())
+          @if ($errors->get('task') || $errors->get('start') || $errors->get('end'))
               <div class="alert alert-danger border-0 rounded-3 shadow-sm p-3 mb-4">
                   <h5 class="mb-2 fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i>Ups! Ada yang salah:</h5>
                   <ul class="mb-0 ps-3">
@@ -67,21 +67,21 @@
           <div class="col-md-3">
             <label for="inputMulai" class="form-label">⏱️Mulai</label>
             <div class="input-group mb-3">
-              <input id="inputMulai" name="start" type="text" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #ff8f70; border: none">
+              <input id="inputMulai" name="start" type="text" value="00:00" class="btn btn-secondary form-control w-auto shadow-sm border-0" style="background-color: #ff8f70; border: none">
             </div>
           </div>
         
           <div class="col-md-3">
             <label for="inputSelesai" class="form-label">⏳Selesai</span></label>
             <div class="input-group mb-3">
-              <input id="inputSelesai" name="end" type="text" value="00:00" class="btn btn-secondary form-control w-auto" style="background-color: #e07a5f; border: none">
+              <input id="inputSelesai" name="end" type="text" value="00:00" class="btn btn-secondary form-control w-auto shadow-sm border-0" style="background-color: #e07a5f; border: none">
             </div>
           </div>
         
           <div class="col-md-6">
             <label for="inputAmount" class="form-label d-flex">🎯tugas&nbsp;<b><span id="countAndEnd" class="d-block"><span id="count">0</span>/20</span></b></label>
             <div class="input-group">
-              <input value="{{ old('task') }}" name="task" placeholder="......" type="text" id="inputAmount" class="form-control" aria-label="Amount (to the nearest dollar)" />
+              <input autocomplete="off" value="{{ old('task') }}" name="task" placeholder="......" type="text" id="inputAmount" class="form-control shadow-sm border-0" aria-label="Amount (to the nearest dollar)" />
               <button class="input-group-text btn text-white" style="background-color: #e07a5f; border: none">Add</button>
             </div>
           </div>

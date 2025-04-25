@@ -75,7 +75,33 @@ class TodoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request);
+
+        $request->validate([
+            "startEdit" => "required|date_format:H:i",
+            "endEdit" => "required|date_format:H:i|after:startEdit",
+            "taskEdit" => "required|max:20"
+        ],[
+            "startEdit.required" => "Field jam harus diisi/tidal boleh kosong",
+            "startEdit.date_format" => "Format waktu harus HH:MM (contoh 12:00)",
+            "endEdit.required" => "Field jam harus diisi/tidal boleh kosong",
+            "endEdit.date_format" => "Format waktu harus HH:MM (contoh 12:00)",
+            "endEdit.after" => "waktu selesai harus lebih lambat daripada waktu mulai",
+            "taskEdit.required" => "Field kerjaan harus diisi/tidal boleh kosong",
+            "taskEdit.max" => "hanya bisa memasukkan maksimal 20 karakter pada field tugas"
+        ]);
+
+        // Tambahkan ID yang dicek dari session atau validasi biar yang muncul cuma modal milik data yang error aja.
+        // return back()->withErrors($validator)->with('edit_modal_id', $request->input('id'));
+        $data = [
+            "start" => $request->input("startEdit"),
+            "end" => $request->input("endEdit"),
+            "task" => $request->input("taskEdit")
+        ];
+    
+        DailyTodo::where("daily_todo_id", $id)->update($data);
+        return redirect()->route("daily")->with("success","berhasil edit tugas");
+        
     }
 
     /**

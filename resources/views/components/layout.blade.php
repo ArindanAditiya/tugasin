@@ -24,6 +24,7 @@
 
     <!-- style mandiri -->
     <link rel="stylesheet" href={{ asset("css/style.css") }} />
+    <link rel="stylesheet" href={{ asset("css/sidebarjjjj.css") }} />
     <link rel="stylesheet" href={{ asset("css/clockvalidate.css") }} />
     <link rel="stylesheet" href={{ asset("css/taskvalidate.css") }} />
 
@@ -58,12 +59,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- script mandiri --}}
-    <script src={{ asset("js/ui.js") }}></script>
-    <script src={{ asset("js/tooltip.js") }}></script>
-    <script src={{ asset("js/clockpicker.js") }}></script>
-    <script src={{ asset("js/clockvalidate.js") }}></script>
-    <script src={{ asset("js/taskvalidate.js") }}?v={{ time() }}></script>
-    <script src={{ asset("js/deleteconfirm.js") }}></script>
+    <script src={{ asset("js/ui.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/sidebar.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/tooltip.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/clockpicker.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/clockformater.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/taskhandler.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/deleteconfirm.js") }}?v={{ time() }}></script>
+    <script src={{ asset("js/errormessegehandler.js") }}?v={{ time() }}></script>
   </body>
 </html>
 
